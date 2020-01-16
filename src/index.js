@@ -22,7 +22,7 @@ fs.readFile(mraFile, 'utf8', (err, content) => {
   if (traceLevel > 0) console.log(mra.misterromdescription.rom);
 
   switch (mode) {
-    case 'normal':    
+    case 'normal':
     default:
       break;
     case 'gen':

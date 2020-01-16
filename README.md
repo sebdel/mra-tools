@@ -8,6 +8,6 @@ To run it:
 
 `npm start test.mra`
 
-To cretae fake ROM files from a MRA, use:
+To create fake ROM files from a MRA, use (linux only):
 
 `npm start test.mra gen`
