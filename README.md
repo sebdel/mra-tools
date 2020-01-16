@@ -1,13 +1,21 @@
 # mra-tools
 
+# Installation
+*This tool is linux only at the moment*
+
 Install node, npm and clone this repo. Then, at the root of mra-tools, do:
 
 `npm install`
 
-To run it:
+# Usage
+To extract a rom, place its MRA and zip file in the same folder and do:
 
-`npm start test.mra`
+`npm start my.mra`
 
-To create fake ROM files from a MRA, use (linux only):
+If all goes well, the .rom file is created in the same folder and the program ends with the message:
 
-`npm start test.mra gen`
+`md5 matches`
+
+Optionally, for testing purpose, you can generate fake zip files from a MRA, using:
+
+`npm start my.mra gen`
