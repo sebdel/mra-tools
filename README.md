@@ -1,9 +1,9 @@
 # mra-tools
 
-Install node, npm and then:
+Install node, npm and clone this repo. Then, at the root of mra-tools, do:
 
-npm install
+`npm install`
 
-and run with:
+To run it:
 
-npm start input_file.mra
+`npm start test.mra`
