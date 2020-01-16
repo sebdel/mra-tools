@@ -1,13 +1,13 @@
 # mra-tools
 
-# Installation
-*This tool is linux only at the moment*
+## Installation
+**This tool is linux only at the moment**
 
 Install node, npm and clone this repo. Then, at the root of mra-tools, do:
 
 `npm install`
 
-# Usage
+## Usage
 To extract a rom, place its MRA and zip file in the same folder and do:
 
 `npm start my.mra`
