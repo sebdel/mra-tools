@@ -3,12 +3,11 @@
 ## Installation
 **This tool is linux only at the moment**
 
-### From source
+### Build from source
 Install node, npm and clone this repo. Then, at the root of mra-tools, do:
 
 `npm install`
 
-### Build
 Install nexe
 
 `npm i nexe`
@@ -25,7 +24,7 @@ To extract a rom, place its MRA and zip file in the same folder as mra-tools and
 ### Dev version
 `npm start my.mra`
 
-### Binary version
+### Binary version (only work in mra-tools directory at the moment)
 `./mra-tools my.mra`
 
 If all goes well, the .rom file is created in the same folder and the program ends with the message:
