@@ -1,22 +1,19 @@
 # mra-tools
 
-## Installation
-**This tool is linux only at the moment**
+## Download
+
+linux:
+macos:
+windows:
 
 ### Build from source
-Install node, npm and clone this repo. Then, at the root of mra-tools, do:
+Install node v12, npm and pkg (i.e. npm i -g pkg) and clone this repo. Then, at the root of mra-tools, do:
 
 `npm install`
 
-Install nexe
-
-`npm i nexe`
-
-then
-
 `npm run build`
 
-will create the dist directory and the mra-tools binary.
+this will create binaries for all target platforms at the root of the directory.
 
 ## Usage
 To extract a rom, place its MRA and zip file in the same folder as mra-tools and do:
@@ -24,7 +21,7 @@ To extract a rom, place its MRA and zip file in the same folder as mra-tools and
 ### Dev version
 `npm start my.mra`
 
-### Binary version (only work in mra-tools directory at the moment)
+### Binary version
 `./mra-tools my.mra`
 
 If all goes well, the .rom file is created in the same folder and the program ends with the message:

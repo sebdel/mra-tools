@@ -1,11 +1,12 @@
 {
   "name": "mra-tools",
+  "bin": "dist/index.js",
   "version": "1.0.0",
   "description": "Tools for Mister Rom configuration files (MRA) management",
   "main": "src/index.js",
   "scripts": {
     "start": "babel-node src/index.js",
-    "build": "babel src --out-dir dist; nexe -i dist/index.js -o mra-tools",
+    "build": "babel src --out-dir dist;pkg .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sebastien Delestaing",
