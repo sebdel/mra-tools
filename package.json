@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "babel-node src/index.js",
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir dist; nexe -i dist/index.js -o mra-tools",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sebastien Delestaing",

@@ -1,13 +1,14 @@
+import "regenerator-runtime/runtime";
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import unzipper from 'unzipper';
+import unzip from 'unzipper';
 import parser from 'xml2json';
 
 let mraFile = '';
 let traceLevel = 0;
 
-const concatenateParts = (parts, dirname) => {
+const concatenatePartsSync = (parts, dirname) => {
   let romBuffer = Buffer.concat(
     parts.map(({ name }) => {
       let filePath = path.format({ dir: dirname, base: name });
@@ -20,18 +21,20 @@ const concatenateParts = (parts, dirname) => {
   let md5hash = crypto.createHash('md5').update(romBuffer).digest("hex");
 
   return { romBuffer, md5hash };
-}
+};
 
-const unzipIt = (zipPath) => {
-  fs.createReadStream(zipPath.base).pipe(unzipper.Extract({ path: zipPath.name }));
-}
+const unzipAsync = async (zipPath) => {
+  //fs.createReadStream(zipPath.base).pipe(unzipper.Extract({ path: zipPath.name }));
+  const d = await unzip.Open.file(zipPath.base);
+  return await d.extract({ path: zipPath.name, concurrency: 5 });
+};
 
 if (process.argv.length > 2)
   mraFile = process.argv[2];
 
-if (traceLevel > 0) console.log({ mraFile, mode });
+if (traceLevel > 0) console.log({ mraFile });
 
-fs.readFile(mraFile, 'utf8', (err, content) => {
+fs.readFile(mraFile, 'utf8', async (err, content) => {
   if (err) throw err;
 
   let mra = JSON.parse(parser.toJson(content));
@@ -40,8 +43,12 @@ fs.readFile(mraFile, 'utf8', (err, content) => {
   let zipPath = path.parse(mra.misterromdescription.rom.zip);
   let romFile = `${zipPath.name}.rom`;
 
-  unzipIt(zipPath);
-  let { romBuffer, md5hash } = concatenateParts(mra.misterromdescription.rom.part, zipPath.name);
+  if (traceLevel > 0) console.log({ zipPath, romFile });
+
+  console.log(`Extracting ${zipPath.base}`);
+  await unzipAsync(zipPath);
+  let { romBuffer, md5hash } = concatenatePartsSync(mra.misterromdescription.rom.part, zipPath.name);
+  console.log(`Writing ${romFile}`);
   fs.writeFileSync(romFile, romBuffer);
 
   console.log(`> ${md5hash} ${romFile} created.`)
