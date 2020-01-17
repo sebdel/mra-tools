@@ -9,7 +9,7 @@ Install node, npm and clone this repo. Then, at the root of mra-tools, do:
 
 ## Build
 
-`npm run build`
+`npm run build`\
 Will create the dist directory with all the files needed to distribute the app runnable by node.
 
 ## Usage
@@ -25,6 +25,3 @@ If all goes well, the .rom file is created in the same folder and the program en
 
 `md5 matches`
 
-Optionally, for testing purpose, you can generate fake zip files from a MRA, using:
-
-`npm start my.mra gen`
