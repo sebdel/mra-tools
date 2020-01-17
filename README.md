@@ -3,10 +3,6 @@
 ## Installation
 **This tool is linux only at the moment**
 
-### Download
-
-Get a prebuilt version for ubuntu here: https://drive.google.com/open?id=1vHFPncbjNsoAIu9a7mNw2OKXJ8ueU8Pl
-
 ### From source
 Install node, npm and clone this repo. Then, at the root of mra-tools, do:
 
