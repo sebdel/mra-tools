@@ -1,12 +1,13 @@
 import fs from 'fs';
+import crypto from 'crypto';
 import path from 'path';
 import { execSync } from 'child_process';
 
 const blockSize = '1024';
 const count = 2;
 
-export const concatenateParts = (parts, dirname, romFile) => {
-  fs.writeFileSync(romFile, Buffer.concat(
+export const concatenateParts = (parts, dirname) => {
+  let romBuffer = Buffer.concat(
     parts.map(({ name }) => {
       let filePath = path.format({ dir: dirname, base: name });
       console.log("Reading", filePath);
@@ -14,13 +15,10 @@ export const concatenateParts = (parts, dirname, romFile) => {
         throw new Error(`${filePath} not found!`)
       }
       return fs.readFileSync(filePath);
-    })));
-  console.log(`> ${romFile} created.`)
-}
+    }));
+  let md5hash = crypto.createHash('md5').update(romBuffer).digest("hex");
 
-export const checkmd5 = (fileName, md5) => {
-  let md5sum = execSync(`md5sum ${fileName}`).toString();
-  return md5sum.startsWith(md5);
+  return {romBuffer, md5hash};
 }
 
 export const generateRandomFiles = (outputDir, fileNames) => {

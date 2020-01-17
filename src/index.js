@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import parser from 'xml2json';
-import {concatenateParts, checkmd5, generateRandomFiles, zipIt, unzipIt} from './utils';
+import {concatenateParts, generateRandomFiles, zipIt, unzipIt} from './utils';
 
 let mraFile = '';
 let traceLevel = 0;
@@ -26,8 +26,10 @@ fs.readFile(mraFile, 'utf8', (err, content) => {
   switch (mode) {
     case 'normal':
       unzipIt(zipPath);
-      concatenateParts(mra.misterromdescription.rom.part, zipPath.name, romFile);
-      console.log(checkmd5(romFile, mra.misterromdescription.rom.md5) ? "md5 matches" : "md5 doesn't match");
+      let {romBuffer, md5hash} = concatenateParts(mra.misterromdescription.rom.part, zipPath.name);
+      fs.writeFileSync(romFile, romBuffer);
+      console.log(`> ${md5hash} ${romFile} created.`)   
+      console.log(mra.misterromdescription.rom.md5.startsWith(md5hash) ? "md5 matches" : "md5 doesn't match");
     default:
       break;
     case 'gen':
