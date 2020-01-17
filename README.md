@@ -10,9 +10,12 @@ Install node, npm and clone this repo. Then, at the root of mra-tools, do:
 ## Build
 Install nexe
 
-`npm i nexe`\
-then\
-`npm run build`\
+`npm i nexe`
+
+then
+
+`npm run build`
+
 will create the dist directory and the mra-tools binary.
 
 ## Usage
