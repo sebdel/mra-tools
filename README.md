@@ -2,9 +2,8 @@
 
 ## Download
 
-linux: https://drive.google.com/open?id=1jJaQQ8rQ-65BUnHwH3ZhaLguJ7q6cw2A  \
-macos:\
-windows:\
+linux:
+https://drive.google.com/file/d/1jJaQQ8rQ-65BUnHwH3ZhaLguJ7q6cw2A/view?usp=sharing
 
 ### Build from source
 Install node v12, npm and pkg (i.e. npm i -g pkg) and clone this repo. Then, at the root of mra-tools, do:
